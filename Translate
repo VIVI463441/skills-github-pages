@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Translate Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      background-color: #4285F4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Traduction avec Google Translate</h1>
+  <p>Entrez du texte et cliquez sur le bouton pour afficher la traduction</p>
+  <textarea id="text-input" placeholder="Écrivez ici..."></textarea>
+  <br>
+  <button onclick="openGoogleTranslate()">Traduire</button>
+
+  <div id="translation-frame"></div>
+
+  <script>
+    function openGoogleTranslate() {
+      const text = encodeURIComponent(document.getElementById('text-input').value);
+      const translateURL = `https://translate.google.com/?sl=auto&tl=fr&text=${text}&op=translate`;
+      
+      // Afficher Google Translate dans un iframe
+      document.getElementById('translation-frame').innerHTML = `
+        <iframe src="${translateURL}" title="Traduction Google"></iframe>
+      `;
+    }
+  </script>
+</body>
+</html>
